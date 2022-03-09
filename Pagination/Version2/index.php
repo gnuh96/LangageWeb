@@ -73,9 +73,11 @@
             
             // Calculer page de début '$min' et page de fin '$max'
             $middle = ceil($range/2);
+            // si $total_page < $range, on affiche tous les pages
             if($total_page < $range) {
                 $min = 1;
                 $max = $total_page;
+            //sinon 
             } else {
                 $min = $current_page - $middle + 1;
                 $max = $current_page + $middle;
@@ -88,12 +90,14 @@
                     $max = $total_page;
                     $min = $total_page - $range + 1;
                 }
-            }                
-            // Si current_page > 1 et total_page > 1, afficher 'Prev'
+            }         
+
+            // Si current_page > 1 et total_page > 1, on affiche 'Prev'
             if ($current_page > 1 && $total_page > 1){
                 echo '<button><a href="index.php?page='.($current_page-1).'">Prev</a></button>';
             }
             
+            // Afficher les buttons de pages dans [min,max]
             for ($i = $min; $i <= $max; $i++)
             {
                 if ($current_page == $i){
@@ -106,7 +110,7 @@
 
             echo $p;
 
-            // Si current_page < $total_page et total_page > 1, afficher 'Next
+            // Si current_page < $total_page et total_page > 1, on affiche 'Next
             if ($current_page < $total_page && $total_page > 1){
                 echo '<button><a href="index.php?page='.($current_page+1).'">Next</a></button>';
             }
