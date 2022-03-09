@@ -9,10 +9,10 @@
         <?php 
         // Traitement des requêtes de base de données et algorithme de pagination
         // Connection a la BD
-        $conn = mysqli_connect('localhost', 'root', 'root', 'paging_example');
+        $conn = mysqli_connect('localhost', 'root', 'root', 'pagination');
  
         // Calculer le nombre total de lignes dans la table
-        $result = mysqli_query($conn, 'select count(id) as total from news');
+        $result = mysqli_query($conn, 'select count(id) as total from Perso');
         $row = mysqli_fetch_assoc($result);
         $total_records = $row['total'];
         
@@ -35,11 +35,17 @@
         $start = ($current_page - 1) * $limit;
         
         // Acces a la liste de donnees
-        $result = mysqli_query($conn, "SELECT * FROM news LIMIT $start, $limit"); 
+        $result = mysqli_query($conn, "SELECT * FROM Perso LIMIT $start, $limit"); 
         ?>
         <div>
             <?php 
             // Afficher la liste de donnees
+            while ($row = mysqli_fetch_assoc($result)){
+                echo '<li>' . $row['Numero'] . '</li>';
+                echo '<li>' . $row['Nom'] . '</li>';
+                echo '<li>' . $row['Prenom'] . '</li>';
+                echo '<li>' . $row['DateNaiss'] . '</li>';
+            }
             ?>
         </div>
         <div class="pagination">
