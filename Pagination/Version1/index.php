@@ -66,12 +66,12 @@
         <div class="pagination">
            <?php 
             // Pagination
-            // Si current_page > 1 et total_page > 1, afficher 'Prev'
-            if ($current_page > 1 && $total_page > 1){
+            // Si current_page > 1, afficher 'Prev'
+            if ($current_page > 1){
                 echo '<button><a href="index.php?page='.($current_page-1).'">Prev</a></button>';
             }
-            // Si current_page < $total_page et total_page > 1, afficher 'Next
-            if ($current_page < $total_page && $total_page > 1){
+            // Si current_page < $total_page, afficher 'Next
+            if ($current_page < $total_page){
                 echo '<button><a href="index.php?page='.($current_page+1).'">Next</a></button>';
             }
            ?>
