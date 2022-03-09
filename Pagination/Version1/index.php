@@ -70,7 +70,7 @@
             if ($current_page > 1 && $total_page > 1){
                 echo '<button><a href="index.php?page='.($current_page-1).'">Prev</a></button>';
             }
-            // Si current_page < $total_page et total_page > 1, afficher 'Next
+            // Si current_page < total_page et total_page > 1, afficher 'Next'
             if ($current_page < $total_page && $total_page > 1){
                 echo '<button><a href="index.php?page='.($current_page+1).'">Next</a></button>';
             }
