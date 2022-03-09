@@ -16,15 +16,15 @@
         }
         // Calculer le nombre total de lignes dans la table
         $result = mysqli_query($conn, 'SELECT * FROM Perso');
-        $total_records = mysqli_num_rows($result);
-        // echo $total_records;
+        $total_rows = mysqli_num_rows($result);
+        
         // Fixer la limit et la page
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
         $limit = 5;
         
         // Calculer le nombre total de page et la 1ere ligne de la page
         // Le nombre total de page
-        $total_page = ceil($total_records / $limit);
+        $total_page = ceil($total_rows / $limit);
         
         if ($current_page > $total_page){
             $current_page = $total_page;
@@ -43,9 +43,9 @@
             <table class="table table-striped table-condensed table-bordered table-rounded">
                 <thead>
                     <tr>
-                        <th>Numero</th>
-                        <th width="20%">Nom</th>
-                        <th width="20%">Prenom</th>
+                        <th width="25%">Numero</th>
+                        <th width="25%">Nom</th>
+                        <th width="25%">Prenom</th>
                         <th width="25%">DateNaiss</th>
                     </tr>
                     </thead>
