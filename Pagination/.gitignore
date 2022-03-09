@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,phpstorm
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,phpstorm
+# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,phpstorm,microsoftoffice
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,phpstorm,microsoftoffice
 
 ### macOS ###
 # General
@@ -30,6 +30,27 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+### MicrosoftOffice ###
+*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Word Auto Backup File
+Backup of *.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -161,4 +182,4 @@ fabric.properties
 
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,phpstorm
+# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,phpstorm,microsoftoffice
