@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <title>Televersement de fichiers</title>
         <meta charset="UTF-8">
@@ -7,10 +7,11 @@
     </head>
     <body>
         <form action="upload.php" method="POST" enctype="multipart/form-data">
-            <h1>Televersement fichier</h1>
-            <input type="file" name="fichier" id="fileupload">
+            <h2>Televersement fichier</h2>
+            <label for="fileSelect">Fichier :</label>
+            <input type="file" name="fichier" id="fileselect">
             <input type="submit" name="submit" value="upload">
-            <p>On n'accepte que les formats .jpeg, .png, la taille maximale est 8Mo</p>
+            <p><strong>Attention :</strong> On n'accepte que les formats .jpeg, .png, la taille maximale est 8 Mo</p>
         </form>
     </body>
 </html>
