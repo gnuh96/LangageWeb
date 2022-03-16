@@ -26,13 +26,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(in_array($type, $pass)){
             // Vérifier si le fichier existe avant de le téléverser
             if(file_exists("$repertoire/$name")){
-                echo $filename . " existe déjà.";
+                echo "Fichier " . $name . " existe déjà.";
             } else{
                 move_uploaded_file($fichier["tmp_name"], "$repertoire/$name");
-                echo "Votre fichier a été téléversé avec succès.";
+                // Ajouter des informations du fichier au BD
+                include "bd-connect.php";
+                // $sql = "SELECT * FROM coordonnees ORDER by id ASC";
+                // if ($resultat = mysqli_query($connexion, $sql)) {
+                //     while ($row = mysqli_fetch_row($resultat)) {
+                //         printf("%s, %s, %s\n", $row[0], $row[1], $row[2]);
+                //     }
+                //     mysqli_free_result($resultat);
+                // }
+                $query = "INSERT INTO coordonnees(nom,typeext,taille) VALUES ('$name', '$type', '$size')";
+                if (mysqli_query($connexion, $query)) {
+                    echo "Votre fichier a été téléversé avec succès."."<br>";
+                } else {
+                    echo "Error: " . $query . "<br>" . mysqli_error($conn)."<br>" ;
+                }
+                mysqli_close($connexion);
             } 
-        } else{
-            echo "Error: Il y a eu un problème lors du téléversement. Veuillez réessayer."; 
         }
     } else{
         echo "Error: " . $fichier["error"];
