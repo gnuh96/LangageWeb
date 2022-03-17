@@ -9,7 +9,7 @@
         <?php 
         // Traitement des requêtes de base de données et algorithme de pagination
         // Connection a la BD
-        $conn = mysqli_connect('localhost', 'root', 'hungtam2605', 'pagination');
+        $conn = mysqli_connect('localhost', 'root', 'root', 'pagination');
         
         // Check connection
         if (mysqli_connect_error()) {
