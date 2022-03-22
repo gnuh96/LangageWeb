@@ -40,9 +40,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // }
                 $query = "INSERT INTO coordonnees(nom,typeext,taille) VALUES ('$name', '$type', '$size')";
                 if (mysqli_query($connexion, $query)) {
-                    echo "Votre fichier a été téléversé avec succès."."<br>";
+                    echo "<p>Votre fichier a été téléversé avec succès.</p>"."<br>";
                 } else {
-                    echo "Error: " . $query . "<br>" . mysqli_error($conn)."<br>" ;
+                    echo "Error: " . $query . "<br>" . mysqli_error($connexion)."<br>" ;
                 }
                 mysqli_close($connexion);
             } 
