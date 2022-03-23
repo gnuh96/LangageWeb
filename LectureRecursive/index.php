@@ -16,7 +16,7 @@ $total_rows = mysqli_num_rows($result);
 
 // Fixer la limit et la page
 $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-$limit = 6;
+$limit = 4;
 
 // Calculer le nombre total de page et la 1ere ligne de la page
 // Le nombre total de page
@@ -45,7 +45,6 @@ $result = mysqli_query($connexion, "SELECT * FROM dossier LIMIT $start, $limit")
         </div>
     <?php endwhile;?>
 </div>
-
 <div class="pagination">
     <?php
     // Pagination
