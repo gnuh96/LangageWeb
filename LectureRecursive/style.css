@@ -1,7 +1,7 @@
 .grille {
     display: grid;
     grid-template-columns: 300px 300px;
-    grid-template-rows: 220px 220px;
+    grid-template-rows: 220px 220px 220px;
     grid-gap: 2em;
 }
 .a {

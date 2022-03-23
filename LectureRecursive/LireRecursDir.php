@@ -53,8 +53,8 @@ function explorerDir($path)
                     $nom = pathinfo($path_source, PATHINFO_BASENAME);
                     $size = filesize($path_source);
                     // Ajouter des informations du fichier au BD
-                    $connexion = mysqli_connect('localhost', 'root', 'root', 'storage');
-                    $query = "INSERT INTO coordonnees(nom,ext,path,taille) VALUES ('$nom', '$pass[$ext]', '$path_source', '$size')";
+                    include "../bd-connect.php";
+                    $query = "INSERT INTO dossier(nom,ext,path,taille) VALUES ('$nom', '$pass[$ext]', '$path_source', '$size')";
                     if (mysqli_query($connexion, $query)) {
                         echo "Votre fichier a été ajouté avec succès."."<br>";
                     } else {

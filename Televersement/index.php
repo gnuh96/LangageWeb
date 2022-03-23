@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </form>
         <h2>Les images</h2>
         <?php
-        include "bd-connect.php";
+        include "../bd-connect.php";
         // Calculer le nombre total de lignes dans la table
         $result = mysqli_query($connexion, 'SELECT * FROM coordonnees');
         $total_rows = mysqli_num_rows($result);
