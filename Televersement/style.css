@@ -1,0 +1,14 @@
+.grille {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 200px 200px;
+    grid-gap: 3em;
+    margin-bottom: 50px;
+}
+.a {
+    display: grid;
+    grid-template-rows: 200px 50px;
+}
+.name {
+    text-align:center;
+}

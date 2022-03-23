@@ -58,6 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <title>Televersement de fichiers</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <form action="index.php" method="POST" enctype="multipart/form-data">
@@ -95,14 +96,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Acces a la liste de donnees
         $result = mysqli_query($connexion, "SELECT * FROM coordonnees LIMIT $start, $limit");
         ?>
-        <div>
+        <div class="grille">
             <?php
             // Afficher la liste de donnees
-            $i = 0;
-            while ($row = mysqli_fetch_array($result)) {
-                echo "<img src='./upload/".$row['nom']."' width='300px' ><br>";
-            }
-            ?>
+            while ($row = mysqli_fetch_array($result)) : ?>
+                <div class="a">
+                    <div><img src="upload/<?php echo $row['nom']; ?>" width="300px" height="200px" alt=""></div>
+                    <div class="name"><?php echo $row['nom']; ?></div>
+                </div>
+            <?php endwhile;?>
         </div>
 
         <div class="pagination">
