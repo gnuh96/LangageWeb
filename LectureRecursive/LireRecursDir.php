@@ -31,7 +31,7 @@ function explorerDir($path)
 				$sav_path = $path;
 				// Enregistrer l'adresse de sous-repertoire
 				$path .= "/".$entree;
-                echo $path."<br>";
+                // echo $path."<br>";
 				// Parcourir les fichiers dans sous-repertoire (fonction recursive)
 				explorerDir($path);
 				// Reprendre l'ancienne adresse pour pacourir les fichiers restes dans la repertoire au debut
@@ -41,16 +41,26 @@ function explorerDir($path)
 			{
 				// L'adresse de fichier actuel
 				$path_source = $path."/".$entree;
-                echo $path_source."<br>";
+                // echo $path_source."<br>";
 				//Si c'est un .png ou un .jpeg		
 				//Alors je ferais quoi ? Devinez !
 				//Afficher les fichier .png et .jpeg
-//                $pass = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
-//                // Vérifier l'extension du fichier
-//                $ext = pathinfo($path_source, PATHINFO_EXTENSION);
-//                if(array_key_exists($ext, $pass)) {
-//                    echo $path_source."<br>";
-//                }
+                $pass = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
+                // Vérifier l'extension du fichier
+                $ext = pathinfo($path_source, PATHINFO_EXTENSION);
+                if(array_key_exists($ext, $pass)) {
+                    // echo $path_source." have a size :".filesize($path_source)."<br>";
+                    $nom = pathinfo($path_source, PATHINFO_BASENAME);
+                    $size = filesize($path_source);
+                    $connexion = mysqli_connect('localhost', 'root', 'root', 'storage');
+                    $query = "INSERT INTO coordonnees(nom,typeext,taille) VALUES ('$nom', '$pass[$ext]', '$size')";
+                    if (mysqli_query($connexion, $query)) {
+                        echo "Votre fichier a été téléversé avec succès."."<br>";
+                    } else {
+                        echo "Error: " . $query . "<br>" . mysqli_error($connexion)."<br>" ;
+                    }
+                    mysqli_close($connexion);
+                }
 			}
 		}
 	}

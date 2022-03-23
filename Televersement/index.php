@@ -44,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 } else {
                     echo "Error: " . $query . "<br>" . mysqli_error($connexion)."<br>" ;
                 }
+                mysqli_close($connexion);
             }
         }
     } else{
