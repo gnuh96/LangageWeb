@@ -52,10 +52,11 @@ function explorerDir($path)
                     // echo $path_source." have a size :".filesize($path_source)."<br>";
                     $nom = pathinfo($path_source, PATHINFO_BASENAME);
                     $size = filesize($path_source);
+                    // Ajouter des informations du fichier au BD
                     $connexion = mysqli_connect('localhost', 'root', 'root', 'storage');
-                    $query = "INSERT INTO coordonnees(nom,typeext,taille) VALUES ('$nom', '$pass[$ext]', '$size')";
+                    $query = "INSERT INTO coordonnees(nom,ext,path,taille) VALUES ('$nom', '$pass[$ext]', '$path_source', '$size')";
                     if (mysqli_query($connexion, $query)) {
-                        echo "Votre fichier a été téléversé avec succès."."<br>";
+                        echo "Votre fichier a été ajouté avec succès."."<br>";
                     } else {
                         echo "Error: " . $query . "<br>" . mysqli_error($connexion)."<br>" ;
                     }
