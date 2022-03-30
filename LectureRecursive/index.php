@@ -10,7 +10,7 @@
     <body>
         <div class="page">
             <div>
-                <h2>In cay thu muc </h2>
+                <h2>Affichage de dossier </h2>
                 <?php
                 include 'LireRecursDir.php';
                 ?>

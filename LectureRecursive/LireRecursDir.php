@@ -39,29 +39,25 @@ function explorerDir($path)
 			else
 			{
 				// L'adresse de fichier actuel
-				// $path_source = $path."/".$entree;
+				$path_source = $path."/".$entree;
 				$arbre .= $entree.'<br>';
                 // echo $path_source."<br>";
 				//Si c'est un .png ou un .jpeg		
 				//Alors je ferais quoi ? Devinez !
 				//Afficher les fichier .png et .jpeg
-//                $pass = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
-//                // Vérifier l'extension du fichier
-//                $ext = pathinfo($path_source, PATHINFO_EXTENSION);
-//                if(array_key_exists($ext, $pass)) {
-//                    // echo $path_source." have a size :".filesize($path_source)."<br>";
-//                    $nom = pathinfo($path_source, PATHINFO_BASENAME);
-//                    $size = filesize($path_source);
-//                    // Ajouter des informations du fichier au BD
-//                    include "../bd-connect.php";
-//                    $query = "INSERT INTO dossier(nom,ext,path,taille) VALUES ('$nom', '$pass[$ext]', '$path_source', '$size')";
-//                    if (mysqli_query($connexion, $query)) {
-//                        echo "Votre fichier a été ajouté avec succès."."<br>";
-//                    } else {
-//                        echo "Error: " . $query . "<br>" . mysqli_error($connexion)."<br>" ;
-//                    }
-//                    mysqli_close($connexion);
-//                }
+                $pass = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "png" => "image/png");
+                // Vérifier l'extension du fichier
+                $ext = pathinfo($path_source, PATHINFO_EXTENSION);
+                if(array_key_exists($ext, $pass)) {
+                    // echo $path_source." have a size :".filesize($path_source)."<br>";
+                    $nom = pathinfo($path_source, PATHINFO_BASENAME);
+                    $size = filesize($path_source);
+                    // Ajouter des informations du fichier au BD
+                    include "../bd-connect.php";
+                    $query = "INSERT INTO dossier(nom,ext,path,taille) SELECT * FROM (SELECT '$nom' AS nom, '$pass[$ext]' AS ext, '$path_source' AS path, '$size' AS taille) AS tmp WHERE NOT EXISTS ( SELECT nom FROM dossier WHERE nom = '$nom') LIMIT 1;";
+                    mysqli_query($connexion, $query);
+                    mysqli_close($connexion);
+                }
 			}
 		}
 	}
