@@ -4,7 +4,7 @@
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 	$connexion = mysqli_connect('localhost', 'root', 'root', 'storage');
-	mysqli_query($connexion, "DELETE FROM dossier WHERE id =$id");
+	mysqli_query($connexion, "DELETE FROM dossier WHERE id = '$id'");
 }
 ?>
 <!DOCTYPE html>
@@ -59,7 +59,7 @@ if(isset($_GET['id'])) {
                         <div class="a">
                             <div><img src="<?php echo '../'.$row['path']; ?>" width="300px" height="200px" alt=""></div>
                             <div class="name"><?php echo $row['nom']; ?></div>
-                            <div class="button"><button><?php echo '<a href = “?id=' . $row['id'] . '">Supprimer</a>';?></button></div>
+                            <div class="button"><button><?php echo '<a href = "?id=' . $row['id'] . '">Supprimer</a>';?></button></div>
                         </div>
                     <?php endwhile;?>
                 </div>
