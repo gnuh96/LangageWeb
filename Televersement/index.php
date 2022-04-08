@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             } else{
                 move_uploaded_file($fichier["tmp_name"], "$repertoire/$name");
                 // Ajouter des informations du fichier au BD
-                include "bd-connect.php";
+                include "../bd-connect.php";
                 // $sql = "SELECT * FROM coordonnees ORDER by id ASC";
                 // if ($resultat = mysqli_query($connexion, $sql)) {
                 //     while ($row = mysqli_fetch_row($resultat)) {
